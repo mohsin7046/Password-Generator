@@ -1,4 +1,5 @@
 # Password Generator
+![pass_generator](https://github.com/mohsin7046/Password-Generator/assets/150660077/244c26e6-682c-4e55-b2ea-6d2617802965)
 
 This project is a simple password generator that allows users to create passwords of their desired length. It is built using Vite + React and styled with Tailwind CSS.
 
