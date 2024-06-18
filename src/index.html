@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body>
+    <div class="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
+        <h1 class="text-3xl font-bold mb-4">Password Generator</h1>
+        <form>
+            <label for="length" class="block mb-2 text-sm font-bold">Length:</label>
+            <input type="number" id="length" class="w-full p-2 pl-10 text-sm text-gray-700" value="6">
+            <label for="has-number" class="block mb-2 text-sm font-bold">Include Number:</label>
+            <input type="checkbox" id="has-number" class="mr-2">
+            <label for="has-special-char" class="block mb-2 text-sm font-bold">Include Special Character:</label>
+            <input type="checkbox" id="has-special-char" class="mr-2">
+            <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Generate Password</button>
+            <div class="mt-4">
+                <label for="password" class="block mb-2 text-sm font-bold">Generated Password:</label>
+                <input type="text" id="password" class="w-full p-2 pl-10 text-sm text-gray-700" value="dusuCHP" readonly>
+            </div>
+        </form>
+    </div>
+    <script>
+        const generatePasswordButton = document.querySelector('button');
+        const passwordInput = document.querySelector('#password');
+        const lengthInput = document.querySelector('#length');
+        const hasNumberInput = document.querySelector('#has-number');
+        const hasSpecialCharInput = document.querySelector('#has-special-char');
+
+        generatePasswordButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const length = lengthInput.value;
+            const hasNumber = hasNumberInput.checked;
+            const hasSpecialChar = hasSpecialCharInput.checked;
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let password = '';
+
+            if (hasSpecialChar) {
+                characters += '!@#$%^&*()_+=-{}[]|;:,.<>?/';
+            }
+
+            for (let i = 0; i < length; i++) {
+                password += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+
+            passwordInput.value = password;
+        });
+    </script>
+</body>
+</html>
